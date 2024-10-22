@@ -1,5 +1,9 @@
 [versions]
 agp = "8.5.2"
+androidxJunit = "1.1.5"
+artifactid = "version"
+core = "1.6.1"
+coreVersion = "1.5.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -7,15 +11,26 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+robolectric = "4.10.3"
+roomCompiler = "2.6.1"
+roomTesting = "2.5.0"
 
 [libraries]
+artifactid = { module = "groupId:artifactId", version.ref = "artifactid" }
+core = { module = "androidx.test:core", version.ref = "core" }
+core-v150 = { module = "androidx.test:core", version.ref = "coreVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+junit-v115 = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "roomTesting" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

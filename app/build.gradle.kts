@@ -32,6 +32,20 @@ android {
 }
 
 dependencies {
+    //Room
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    //Testing
+    // JUnit for unit testing
+    testImplementation(libs.junit)
+    // AndroidX Test - Core Testing library
+    androidTestImplementation(libs.junit.v115)
+    androidTestImplementation(libs.core)
+
+    // Room testing dependencies (allows in-memory databases for fast testing)
+    testImplementation(libs.room.testing)
+
 
     implementation(libs.appcompat)
     implementation(libs.material)
