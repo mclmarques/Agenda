@@ -1,7 +1,6 @@
 package com.android.puc.agenda;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private EventDao eventDao;
     private ExecutorService executorService = Executors.newSingleThreadExecutor(); //Used for background OP
 
-    private static final String TAG = "MainActivity";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Initialize database
@@ -42,42 +38,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        //Test code DEVELOPMENT ONLY
-        this.deleteAll();
-        addNewEvent("Meeting with John", new Date(), "Discuss project details");
-        addNewEvent("Doctor's Appointment", new Date(), "Annual check-up");
-
-        // Test code: Retrieve all events and log them
-        getAllEvents(events -> {
-            if (events != null) {
-                for (Event event : events) {
-                    Log.d(TAG, "Event: " + event.getTitle() + " on " + event.getDate());
-                }
-            } else {
-                Log.d(TAG, "No events found");
-            }
-        });
-
-        // Test code: Search for a specific event by title and date
-        Date searchDate = new Date();  // Assuming today’s date or a known event date
-        getEvent("Doctor's Appointment", searchDate, event -> {
-            if (event != null) {
-                Log.d(TAG, "Found Event: " + event.getTitle() + " on " + event.getDate());
-            } else {
-                Log.d(TAG, "Event not found");
-            }
-        });
-
-        // Test code: Search for a non-existent event
-        getEvent("Non-existent Event", searchDate, event -> {
-            if (event != null) {
-                Log.d(TAG, "Found Event: " + event.getTitle() + " on " + event.getDate());
-            } else {
-                Log.d(TAG, "Event not found");
-            }
-        });
-        this.deleteAll();
     }
 
     //Methods to perform IO operations to the DB
