@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="novo_compromiso">Novo compromiso</string>
+    <string name="data">Data</string>
+    <string name="hora">Hora</string>
+    <string name="descri_o">Descrição</string>
+    <string name="ok">OK</string>
+    <string name="hoje">Hoje</string>
+    <string name="outra_data">Outra data</string>
+    <string name="sem_eventos">Sem eventos hoje.</string>
 </resources>
