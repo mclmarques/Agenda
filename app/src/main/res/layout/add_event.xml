@@ -23,6 +23,14 @@
         android:gravity="center_horizontal">
 
 
+        <TextView
+            android:id="@+id/selectedDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Data não selecionada"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnData"
             android:layout_width="wrap_content"
@@ -40,6 +48,15 @@
             android:layout_height="wrap_content"
             android:text="@string/hora" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSelectedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora não selecionada"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp" />
 
     <EditText
         android:id="@+id/descricaoEditText"
