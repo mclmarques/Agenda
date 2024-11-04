@@ -8,4 +8,6 @@
     <string name="hoje">Hoje</string>
     <string name="outra_data">Outra data</string>
     <string name="sem_eventos">Sem eventos hoje.</string>
+    <string name="sem_data">Data não selecionada</string>
+    <string name="sem_hora">Hora não selecionada</string>
 </resources>

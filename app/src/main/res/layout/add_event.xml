@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,14 +23,9 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal">
 
-
-        <TextView
-            android:id="@+id/selectedDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Data não selecionada"
-            android:textSize="16sp" />
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnData"
@@ -38,7 +34,7 @@
             android:text="@string/data" />
 
         <Space
-            android:layout_width="160dp"
+            android:layout_width="16dp"
             android:layout_height="wrap_content" />
 
 
@@ -49,14 +45,37 @@
             android:text="@string/hora" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvSelectedTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hora não selecionada"
-        android:textSize="16sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp" />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="8.dp">
+
+        <TextView
+            android:id="@+id/selectedDateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/sem_data"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/selectedTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sem_hora"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+
 
     <EditText
         android:id="@+id/descricaoEditText"
@@ -68,9 +87,9 @@
         android:layout_marginBottom="16dp" />
 
     <Button
+        android:id="@+id/btnOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ok"
         android:layout_gravity="center_horizontal"/>
-
 </LinearLayout>

@@ -20,8 +20,8 @@ public class AddEventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_event, container, false);
 
-        selectedDateTextView = view.findViewById(R.id.selectedDateTextView);
-        tvSelectedTime = view.findViewById(R.id.tvSelectedTime);
+        selectedDateTextView = view.findViewById(R.id.selectedDateTv);
+        tvSelectedTime = view.findViewById(R.id.selectedTimeTv);
 
         Button btnData = view.findViewById(R.id.btnData);
         btnData.setOnClickListener(v -> openDatePicker());
