@@ -7,7 +7,8 @@ import androidx.room.TypeConverters;
 
 import android.content.Context;
 
-@Database(entities = {Event.class}, version = 1, exportSchema = false)
+//Version 2 removes the title property from the Event
+@Database(entities = {Event.class}, version = 2, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class EventDB extends RoomDatabase {
     private static EventDB instance;

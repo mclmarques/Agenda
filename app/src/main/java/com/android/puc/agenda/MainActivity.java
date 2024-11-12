@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
     private EventDB eventDB;
     private EventDao eventDao;
-    private ExecutorService executorService = Executors.newSingleThreadExecutor(); //Used for background OP
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor(); //Used for background OP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Methods to perform IO operations to the DB
 
-    public void addNewEvent(String eventName, Date eventDate, String description) {
+    public void addNewEvent(Date eventDate, String description) {
         executorService.execute(() -> {
-            Event event = new Event(eventName, eventDate, description);
+            Event event = new Event(eventDate, description);
             eventDao.upsert(event);
         });
     }
@@ -69,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void getEvent(String title, Date eventDate, Callback<Event> callback) {
+    public void getEvent( Date eventDate, Callback<Event> callback) {
         executorService.execute(() -> {
             // Convert date to string to pass to DAO
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String dateStr = sdf.format(eventDate);
 
             // Perform the query
-            Event event = eventDao.getEvent(title, dateStr);
+            Event event = eventDao.getEventbyDate(dateStr);
 
             // Pass the result back to the main thread via the callback
             runOnUiThread(() -> callback.onResult(event));

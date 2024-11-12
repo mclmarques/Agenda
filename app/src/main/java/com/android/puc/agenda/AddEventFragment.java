@@ -75,7 +75,7 @@ public class AddEventFragment extends Fragment {
         }
 
         // Pass the event to MainActivity
-        ((MainActivity) requireActivity()).addNewEvent("Event Title", eventDate, description);
+        ((MainActivity) requireActivity()).addNewEvent(eventDate, description);
 
         // Show confirmation and clear fields
         Toast.makeText(getContext(), "Event added successfully!", Toast.LENGTH_SHORT).show();
