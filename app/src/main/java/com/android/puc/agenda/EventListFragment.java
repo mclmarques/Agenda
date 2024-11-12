@@ -13,6 +13,9 @@ import androidx.fragment.app.Fragment;
 
 import com.android.puc.agenda.data.Event;
 import java.util.List;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class EventListFragment extends Fragment {
 
@@ -25,8 +28,10 @@ public class EventListFragment extends Fragment {
 
         tvEvents = view.findViewById(R.id.tvEvents);
         Button btnPickDate = view.findViewById(R.id.btnPickDate);
+        Button btnToday = view.findViewById(R.id.btnToday);
 
         btnPickDate.setOnClickListener(v -> openDatePicker());
+        btnToday.setOnClickListener(v -> fetchTodayEvents());
 
         return view;
     }
@@ -36,10 +41,14 @@ public class EventListFragment extends Fragment {
 
         datePickerFragment.setOnDateSetListener(this::fetchEventsForDate);
 
-
         datePickerFragment.show(getParentFragmentManager(), "datePicker");
     }
+    private void fetchTodayEvents() {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String todayDate = sdf.format(Calendar.getInstance().getTime());
 
+        fetchEventsForDate(todayDate);
+    }
     private void fetchEventsForDate(String date) {
         ((MainActivity) requireActivity()).getAllEvents(events -> displayEvents(events, date));
     }
@@ -48,9 +57,16 @@ public class EventListFragment extends Fragment {
     private void displayEvents(List<Event> events, String selectedDate) {
         StringBuilder eventsText = new StringBuilder();
 
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
         for (Event event : events) {
-            if (event.getDate().toString().equals(selectedDate)) {
-                eventsText.append(event.getTitle()).append(": ").append(event.getDescription()).append("\n");
+            String eventDate = dateFormat.format(event.getDate());
+            if (eventDate.equals(selectedDate)) {
+                String eventTime = timeFormat.format(event.getDate());
+                eventsText.append(eventTime)  // Display event time
+                        .append(": ").append(event.getDescription())
+                        .append("\n");
             }
         }
 
@@ -60,4 +76,5 @@ public class EventListFragment extends Fragment {
             tvEvents.setText(eventsText.toString());
         }
     }
+
 }

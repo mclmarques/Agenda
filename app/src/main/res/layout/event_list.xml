@@ -41,7 +41,7 @@
             android:id="@+id/tvEvents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sem_eventos"
+            android:text=""
             android:padding="8dp"
             android:scrollbars="vertical" />
     </ScrollView>
