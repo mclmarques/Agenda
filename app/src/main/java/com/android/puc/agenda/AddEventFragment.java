@@ -2,6 +2,7 @@ package com.android.puc.agenda;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,9 @@ public class AddEventFragment extends Fragment {
             Toast.makeText(getContext(), "Invalid date/time format.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // Printing on Logcat
+        Log.d("AddEvent", "Data: " + date + ", Hora: " + time + ", Descrição: " + description);
 
         // Pass the event to MainActivity
         ((MainActivity) requireActivity()).addNewEvent(eventDate, description);
