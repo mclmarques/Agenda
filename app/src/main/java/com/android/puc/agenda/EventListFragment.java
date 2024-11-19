@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.puc.agenda.data.Event;
+
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -50,7 +53,18 @@ public class EventListFragment extends Fragment {
         fetchEventsForDate(todayDate);
     }
     private void fetchEventsForDate(String date) {
-        ((MainActivity) requireActivity()).getAllEvents(events -> displayEvents(events, date));
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String formattedDate = date;
+
+        try {
+            Date parsedDate = sdf.parse(date);
+            formattedDate = sdf.format(parsedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String finalFormattedDate = formattedDate;
+        ((MainActivity) requireActivity()).getAllEvents(events -> displayEvents(events, finalFormattedDate));
     }
 
     @SuppressLint("SetTextI18n")
